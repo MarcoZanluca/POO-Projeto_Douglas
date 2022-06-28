@@ -7,6 +7,7 @@ uses UPessoa
     ,UQuimico
     ,UFio
     ,UComputador
+    ,SysUtils
     ;
 
 type
@@ -77,43 +78,52 @@ end;
 
 destructor TRegraRequisicao.Destroy;
 begin
-
+  FPessoa.Free;
+  FreeAndNil(FProduto);
   inherited;
 end;
 
 function TRegraRequisicao.flRetornaDescricaoTipoProduto: String;
 begin
-
+  Result := '';
+  if   FProduto is TQuimico then
+       Result := TQuimico (FProduto).flRetornaDescricaoTipoProdutoQuimico;
 end;
 
 function TRegraRequisicao.flRetornaTipoProduto: Byte;
 begin
+  Result := 255;
 
+  if   FProduto is TQuimico then
+       Result := 0;
+  if   FProduto is TFio then
+       Result := 1;
+  if   FProduto is TComputador then
+       Result := 2;
 end;
+
+{ Tipo Pessoa }
 
 function TRegraRequisicao.GetCodigoPessoa: String;
 begin
   Result := FPessoa.Codigo;
 end;
 
+function TRegraRequisicao.GetNome: String;
+begin
+  Result := FPessoa.Nome;
+end;
+
+function TRegraRequisicao.GetInscricoesFederal: String;
+begin
+  Result := FPessoa.InscricaoFederal;
+end;
+
+{ Tipo Produto }
+
 function TRegraRequisicao.GetCodigoProduto: String;
 begin
   Result := FProduto.Codigo;
-end;
-
-function TRegraRequisicao.GetComprimento: Double;
-begin
-
-end;
-
-function TRegraRequisicao.GetConcentracao: Integer;
-begin
-
-end;
-
-function TRegraRequisicao.GetCor: String;
-begin
-
 end;
 
 function TRegraRequisicao.GetDescricao: String;
@@ -121,39 +131,44 @@ begin
 
 end;
 
-function TRegraRequisicao.GetInscricoesFederal: String;
+function TRegraRequisicao.GetConcentracao: Integer;
 begin
+  Result := TQuimico(FProduto).Concentracao;
+end;
 
+function TRegraRequisicao.GetComprimento: Double;
+begin
+  Result := TFio(FProduto).Comprimento; 
+end;
+
+function TRegraRequisicao.GetCor: String;
+begin
+  Result := TFio(FProduto).Cor;
 end;
 
 function TRegraRequisicao.GetMemoria: Integer;
 begin
-
-end;
-
-function TRegraRequisicao.GetNome: String;
-begin
-
+  Result := TComputador(FProduto).Memoria;
 end;
 
 function TRegraRequisicao.GetProcessador: Integer;
 begin
-
+  Result := TComputador(FProduto).Processador;
 end;
 
 procedure TRegraRequisicao.SetCodigoPessoa(const Value: String);
 begin
-
+  FPessoa.Codigo := Value;
 end;
 
 procedure TRegraRequisicao.SetCodigoProduto(const Value: String);
 begin
-
+  FProduto.Codigo := Value;
 end;
 
 procedure TRegraRequisicao.SetComprimento(const Value: Double);
 begin
-
+  TFio(FProduto).Comprimento := Value;
 end;
 
 procedure TRegraRequisicao.SetConcetracao(const Value: Integer);

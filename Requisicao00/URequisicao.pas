@@ -3,22 +3,22 @@ unit URequisicao;
 interface
 
 uses  Windows
-    , Messages
-    , SysUtils
-    , Variants
-    , Classes
-    , Graphics
-    , Controls
-    , Forms
-    , Dialogs
-    , StdCtrls
-    , ExtCtrls
-    , UPessoa
-    , UProduto
-    , UQuimico
-    , UFio
-    , UComputador
-    , URegraRequisicao
+    ,Messages
+    ,SysUtils
+    ,Variants
+    ,Classes
+    ,Graphics
+    ,Controls
+    ,Forms
+    ,Dialogs
+    ,StdCtrls
+    ,ExtCtrls
+    ,UPessoa
+    ,UProduto
+    ,UQuimico
+    ,UFio
+    ,UComputador
+    ,URegraRequisicao
     ;
 
 
