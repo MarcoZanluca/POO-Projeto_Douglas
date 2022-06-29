@@ -21,6 +21,9 @@ object frmRequisicao: TfrmRequisicao
     Height = 417
     Caption = 'Cadastro'
     TabOrder = 0
+    DesignSize = (
+      302
+      417)
     object lbCodigoPessoa: TLabel
       Left = 56
       Top = 29
@@ -59,16 +62,17 @@ object frmRequisicao: TfrmRequisicao
     object lbCampo1: TLabel
       Left = 104
       Top = 264
-      Width = 39
+      Width = 43
       Height = 13
-      Caption = 'Campo1'
+      Anchors = [akRight]
+      Caption = 'Campo1:'
     end
     object lbCampo2: TLabel
       Left = 104
       Top = 291
-      Width = 39
+      Width = 43
       Height = 13
-      Caption = 'Campo2'
+      Caption = 'Campo2:'
     end
     object edCodigoPessoa: TEdit
       Left = 136
@@ -80,7 +84,7 @@ object frmRequisicao: TfrmRequisicao
     object edNomePessoa: TEdit
       Left = 136
       Top = 53
-      Width = 146
+      Width = 151
       Height = 21
       TabOrder = 1
     end
@@ -94,7 +98,7 @@ object frmRequisicao: TfrmRequisicao
     object edDescricaoProduto: TEdit
       Left = 104
       Top = 160
-      Width = 178
+      Width = 183
       Height = 21
       TabOrder = 3
     end
@@ -116,18 +120,19 @@ object frmRequisicao: TfrmRequisicao
         'Fio'
         'Computador')
       TabOrder = 5
+      OnClick = rgTipoProdutoClick
     end
     object edCampo1: TEdit
-      Left = 153
+      Left = 178
       Top = 261
-      Width = 112
+      Width = 109
       Height = 21
       TabOrder = 6
     end
     object edCampo2: TEdit
-      Left = 153
+      Left = 178
       Top = 288
-      Width = 112
+      Width = 109
       Height = 21
       TabOrder = 7
     end
@@ -138,6 +143,7 @@ object frmRequisicao: TfrmRequisicao
       Height = 31
       Caption = 'Adiciona Requisi'#231#227'o'
       TabOrder = 8
+      OnClick = btnAdicionaRequisicaoClick
     end
     object btnLimpaRequisicao: TButton
       Left = 146

@@ -50,6 +50,8 @@ type
     btnEliminarRequisicao: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnLimpaRequisicaoClick(Sender: TObject);
+    procedure rgTipoProdutoClick(Sender: TObject);
+    procedure btnAdicionaRequisicaoClick(Sender: TObject);
   private
     { Private declarations }
     procedure plLimpaCampos;
@@ -61,6 +63,11 @@ var
   frmRequisicao: TfrmRequisicao;
 
 implementation
+
+procedure TfrmRequisicao.FormCreate(Sender: TObject);
+begin
+  plLimpaCampos;
+end;
 
 procedure TfrmRequisicao.plLimpaCampos;
 begin
@@ -76,9 +83,46 @@ begin
   rgTipoProduto.ItemIndex := 0;
 end;
 
-procedure TfrmRequisicao.FormCreate(Sender: TObject);
+procedure TfrmRequisicao.rgTipoProdutoClick(Sender: TObject);
 begin
-  plLimpaCampos;
+  lbCampo2.Visible := (rgTipoProduto.ItemIndex in [1,2]);
+  edCampo2.Visible := lbCampo2.Visible;
+  case rgTipoProduto.ItemIndex of
+    0: lbCampo1.Caption := 'Concentração:';
+    1: begin
+         lbCampo1.Caption := 'Cor:';
+         lbCampo2.Caption := 'Comprimento:';
+       end;
+    2: begin
+         lbCampo1.Caption := 'Memória:';
+         lbCampo2.Caption := 'Processador:';
+       end;
+  end;
+end;
+
+procedure TfrmRequisicao.btnAdicionaRequisicaoClick(Sender: TObject);
+var loRegraRequisicao : TRegraRequisicao;
+begin
+  loRegraRequisicao                  := TRegraRequisicao.Create(rgTipoProduto.ItemIndex);
+  loRegraRequisicao.CodigoPessoa     := edCodigoPessoa.Text;
+  loRegraRequisicao.Nome             := edNOmePessoa.Text;
+  loRegraRequisicao.InscricaoFederal := edInscricaoFederalPessoa.Text;
+
+  loRegraRequisicao.CodigoProduto := edCodigoProduto.Text;
+  loRegraRequisicao.Descricao     := edDescricaoProduto.Text;
+  case rgTipoProduto.ItemIndex of
+       0: loRegraRequisicao.Concentracao := StrToInt(edCampo1.Text);
+       1: begin
+            loRegraRequisicao.Cor         := edCampo1.Text;
+            loRegraRequisicao.Comprimento := StrToFloat(edCampo2.Text);
+          end;
+       2: begin  
+            loRegraRequisicao.Memoria     := StrToInt(edCampo1.Text);
+            loRegraRequisicao.Processador := StrToInt(edCampo2.Text);
+          end;
+  end;
+  listBoxRequisicoes.AddItem(loRegraRequisicao.Nome, loRegraRequisicao);
+
 end;
 
 procedure TfrmRequisicao.btnLimpaRequisicaoClick(Sender: TObject);

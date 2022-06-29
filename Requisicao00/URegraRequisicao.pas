@@ -16,25 +16,32 @@ type
     FPessoa: TPessoa;
     FProduto: TProduto;
 
+    { TPessoa }
     function GetCodigoPessoa: String;
     function GetNome: String;
     function GetInscricoesFederal: String;
 
+    { TProduto }
     function GetCodigoProduto: String;
     function GetDescricao: String;
 
+    { TQuímico, TFio, TComputador }
     function GetConcentracao: Integer;
     function GetCor: String;
     function GetMemoria: Integer;
     function GetComprimento: Double;
     function GetProcessador: Integer;
 
+    { TPessoa }
     procedure SetCodigoPessoa(const Value: String);
     procedure SetNome(const Value: String);
     procedure SetInscricaoFederal(const Value: String);
 
+    { TProduto }
     procedure SetCodigoProduto(const Value: String);
     procedure SetDescricao(const Value: String);
+
+    { TQuímico, TFio, TComputador }
     procedure SetConcetracao(const Value: Integer);
     procedure SetCor(const Value: String);
     procedure SetMemoria(const Value: Integer);
@@ -64,7 +71,7 @@ type
 
 implementation
 
-{ TRegraRequisicao }
+{ Tipo RegraRequisicao - Get }
 
 constructor TRegraRequisicao.Create(const cyTipoProduto: Byte);
 begin
@@ -102,7 +109,7 @@ begin
        Result := 2;
 end;
 
-{ Tipo Pessoa }
+{ Tipo Pessoa - Get }
 
 function TRegraRequisicao.GetCodigoPessoa: String;
 begin
@@ -119,7 +126,7 @@ begin
   Result := FPessoa.InscricaoFederal;
 end;
 
-{ Tipo Produto }
+{ Tipo Produto - Get }
 
 function TRegraRequisicao.GetCodigoProduto: String;
 begin
@@ -128,12 +135,21 @@ end;
 
 function TRegraRequisicao.GetDescricao: String;
 begin
-
+  Result := FProduto.Descricao;
 end;
+
+{ Tipo Químico - Get }
 
 function TRegraRequisicao.GetConcentracao: Integer;
 begin
   Result := TQuimico(FProduto).Concentracao;
+end;
+
+{ Tipo Fio - Get }
+
+function TRegraRequisicao.GetCor: String;
+begin
+  Result := TFio(FProduto).Cor;
 end;
 
 function TRegraRequisicao.GetComprimento: Double;
@@ -141,10 +157,7 @@ begin
   Result := TFio(FProduto).Comprimento; 
 end;
 
-function TRegraRequisicao.GetCor: String;
-begin
-  Result := TFio(FProduto).Cor;
-end;
+{ Tipo Computador - Get }
 
 function TRegraRequisicao.GetMemoria: Integer;
 begin
@@ -156,14 +169,49 @@ begin
   Result := TComputador(FProduto).Processador;
 end;
 
+
+{ Tipo Pessoa - Set }
+
 procedure TRegraRequisicao.SetCodigoPessoa(const Value: String);
 begin
   FPessoa.Codigo := Value;
 end;
 
+procedure TRegraRequisicao.SetNome(const Value: String);
+begin
+  FPessoa.Nome := Value;
+end;
+
+procedure TRegraRequisicao.SetInscricaoFederal(const Value: String);
+begin
+  FPessoa.InscricaoFederal := Value;
+end;
+
+{ Tipo Produto - Set }
+
 procedure TRegraRequisicao.SetCodigoProduto(const Value: String);
 begin
   FProduto.Codigo := Value;
+end;
+
+procedure TRegraRequisicao.SetDescricao(const Value: String);
+begin
+  FProduto.Descricao := Value;
+end;
+
+{ Tipo Químico - Set }
+
+procedure TRegraRequisicao.SetConcetracao(const Value: Integer);
+begin
+  TQuimico(FProduto).Concentracao := Value;
+end;
+
+
+{ Tipo Fio - Set }
+
+procedure TRegraRequisicao.SetCor(const Value: String);
+begin
+  TFio(FProduto).Cor := Value;
 end;
 
 procedure TRegraRequisicao.SetComprimento(const Value: Double);
@@ -171,39 +219,16 @@ begin
   TFio(FProduto).Comprimento := Value;
 end;
 
-procedure TRegraRequisicao.SetConcetracao(const Value: Integer);
-begin
-
-end;
-
-procedure TRegraRequisicao.SetCor(const Value: String);
-begin
-
-end;
-
-procedure TRegraRequisicao.SetDescricao(const Value: String);
-begin
-
-end;
-
-procedure TRegraRequisicao.SetInscricaoFederal(const Value: String);
-begin
-
-end;
+{ Tipo Computador - Set }
 
 procedure TRegraRequisicao.SetMemoria(const Value: Integer);
 begin
-
-end;
-
-procedure TRegraRequisicao.SetNome(const Value: String);
-begin
-
+  TComputador(FProduto).Memoria := Value;
 end;
 
 procedure TRegraRequisicao.SetProcessador(const Value: Integer);
 begin
-
+  TComputador(FProduto).Processador := Value;
 end;
 
 end.
