@@ -150,6 +150,7 @@ end;
 function TRegraRequisicao.GetCor: String;
 begin
   Result := TFio(FProduto).Cor;
+  //TESTAR - Result := TFio(FPessoa).Cor;
 end;
 
 function TRegraRequisicao.GetComprimento: Double;

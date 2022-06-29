@@ -52,6 +52,7 @@ type
     procedure btnLimpaRequisicaoClick(Sender: TObject);
     procedure rgTipoProdutoClick(Sender: TObject);
     procedure btnAdicionaRequisicaoClick(Sender: TObject);
+    procedure btnMostrarDadosClick(Sender: TObject);
   private
     { Private declarations }
     procedure plLimpaCampos;
@@ -110,6 +111,7 @@ begin
 
   loRegraRequisicao.CodigoProduto := edCodigoProduto.Text;
   loRegraRequisicao.Descricao     := edDescricaoProduto.Text;
+
   case rgTipoProduto.ItemIndex of
        0: loRegraRequisicao.Concentracao := StrToInt(edCampo1.Text);
        1: begin
@@ -128,6 +130,20 @@ end;
 procedure TfrmRequisicao.btnLimpaRequisicaoClick(Sender: TObject);
 begin
   plLimpaCampos;
+end;
+
+procedure TfrmRequisicao.btnMostrarDadosClick(Sender: TObject);
+var loRegraRequisicao : TRegraRequisicao;
+    lsRequisicao      : String;
+begin
+  if   listBoxRequisicoes.ItemIndex <> -1 then
+       begin
+         loRegraRequisicao := TRegraRequisicao(listBoxRequisicoes.Items.Objects[listBoxRequisicoes.ItemIndex]);
+
+         lsRequisicao := 'Código ' + loRegraRequisicao.CodigoPessoa + chr(13) +
+
+
+       end;
 end;
 
 {$R *.dfm}

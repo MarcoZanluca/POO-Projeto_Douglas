@@ -185,6 +185,7 @@ object frmRequisicao: TfrmRequisicao
         Height = 31
         Caption = 'Mostrar Dados'
         TabOrder = 0
+        OnClick = btnMostrarDadosClick
       end
       object btnEliminarRequisicao: TButton
         Left = 140
