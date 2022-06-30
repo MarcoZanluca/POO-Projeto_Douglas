@@ -21,8 +21,6 @@ uses  Windows
     ,URegraRequisicao
     ;
 
-
-
 type
   TfrmRequisicao = class(TForm)
     gbCadastro: TGroupBox;
@@ -53,6 +51,7 @@ type
     procedure rgTipoProdutoClick(Sender: TObject);
     procedure btnAdicionaRequisicaoClick(Sender: TObject);
     procedure btnMostrarDadosClick(Sender: TObject);
+    procedure btnEliminarRequisicaoClick(Sender: TObject);
   private
     { Private declarations }
     procedure plLimpaCampos;
@@ -127,6 +126,18 @@ begin
 
 end;
 
+procedure TfrmRequisicao.btnEliminarRequisicaoClick(Sender: TObject);
+var loRegraRequisicao : TRegraRequisicao;
+begin
+  if   listBoxRequisicoes.ItemIndex <> -1 then
+       begin
+         loRegraRequisicao := TRegraRequisicao(listBoxRequisicoes.Items.Objects[listBoxRequisicoes.ItemIndex]);
+         loRegraRequisicao.Free;
+         listBoxRequisicoes.Items.Delete(listBoxRequisicoes.ItemIndex);
+       end;
+end;
+
+
 procedure TfrmRequisicao.btnLimpaRequisicaoClick(Sender: TObject);
 begin
   plLimpaCampos;
@@ -136,14 +147,29 @@ procedure TfrmRequisicao.btnMostrarDadosClick(Sender: TObject);
 var loRegraRequisicao : TRegraRequisicao;
     lsRequisicao      : String;
 begin
-  if   listBoxRequisicoes.ItemIndex <> -1 then
-       begin
-         loRegraRequisicao := TRegraRequisicao(listBoxRequisicoes.Items.Objects[listBoxRequisicoes.ItemIndex]);
+ if   listBoxRequisicoes.ItemIndex <> -1 then
+      begin
+        loRegraRequisicao := TRegraRequisicao(listBoxRequisicoes.Items.Objects[listBoxRequisicoes.ItemIndex]);
 
-         lsRequisicao := 'Código ' + loRegraRequisicao.CodigoPessoa + chr(13) +
+        lsRequisicao := 'Código  ' +loRegraRequisicao.CodigoPessoa+chr(13) +
+                        'Nome ' + loRegraRequisicao.Nome+chr(13) +
+                        'Inscrição Federal ' + loRegraRequisicao.InscricaoFederal+chr(13);
 
-
-       end;
+        case loRegraRequisicao.flRetornaTipoProduto of
+           0: lsRequisicao := lsRequisicao + 'QUÍMICO' + chr(13) +
+                                             'Concentração ' + IntToStr(loRegraRequisicao.Concentracao) + chr(13);
+           1: lsRequisicao := lsRequisicao + 'FIO' + chr(13) +
+                                             'Cor '+loRegraRequisicao.Cor+chr(13) +
+                                             'Comprimento ' + FloatToStr(loRegraRequisicao.Comprimento);
+           2: lsRequisicao := lsRequisicao + 'COMPUTADOR' + chr(13) +
+                                             'Memória ' + IntToStr(loRegraRequisicao.Memoria)+chr(13) +
+                                             'Processador ' + IntToStr(loRegraRequisicao.Processador)+chr(13);
+        end;
+        lsRequisicao := lsRequisicao + loRegraRequisicao.flRetornaDescricaoTipoProduto;
+        ShowMessage(lsRequisicao);
+      end
+ else
+   ShowMessage('Não há registros de requisições para mostrar');
 end;
 
 {$R *.dfm}

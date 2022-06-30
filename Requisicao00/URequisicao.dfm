@@ -194,6 +194,7 @@ object frmRequisicao: TfrmRequisicao
         Height = 31
         Caption = 'Eliminar Requisi'#231#227'o'
         TabOrder = 1
+        OnClick = btnEliminarRequisicaoClick
       end
     end
   end
