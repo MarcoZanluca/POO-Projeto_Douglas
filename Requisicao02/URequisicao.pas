@@ -58,6 +58,7 @@ type
     procedure btnAdicionaRequisicaoClick(Sender: TObject);
     procedure btnMostrarDadosClick(Sender: TObject);
     procedure btnEliminarRequisicaoClick(Sender: TObject);
+    procedure edInscricaoFederalPessoaChange(Sender: TObject);
   private
     { Private declarations }
     procedure plLimpaCampos;
@@ -113,37 +114,43 @@ end;
 procedure TfrmRequisicao.btnAdicionaRequisicaoClick(Sender: TObject);
 var loRegraRequisicao : TRegraRequisicao;
 begin
-  loRegraRequisicao                  := TRegraRequisicao.Create(rgTipoProduto.ItemIndex);
-  loRegraRequisicao.CodigoPessoa     := edCodigoPessoa.Text;
-  loRegraRequisicao.Nome             := edNomePessoa.Text;
-  loRegraRequisicao.InscricaoFederal := edInscricaoFederalPessoa.Text;
+  Try
+      loRegraRequisicao                  := TRegraRequisicao.Create(edInscricaoFederalPessoa.Text, rgTipoProduto.ItemIndex);
 
-  loRegraRequisicao.CodigoProduto := edCodigoProduto.Text;
-  loRegraRequisicao.Descricao     := edDescricaoProduto.Text;
+      { Requisição para TPessoa }
+      loRegraRequisicao.CodigoPessoa     := edCodigoPessoa.Text;
+      loRegraRequisicao.Nome             := edNomePessoa.Text;
+      loRegraRequisicao.InscricaoFederal := edInscricaoFederalPessoa.Text;
 
-  case rgTipoProduto.ItemIndex of
-       0: loRegraRequisicao.Concentracao := StrToInt(edCampo1.Text);
-       1: begin
-            loRegraRequisicao.Cor         := edCampo1.Text;
-            loRegraRequisicao.Comprimento := StrToFloat(edCampo2.Text);
-          end;
-       2: begin  
-            loRegraRequisicao.Memoria     := StrToInt(edCampo1.Text);
-            loRegraRequisicao.Processador := StrToInt(edCampo2.Text);
-          end;
-       3: begin
-            loRegraRequisicao.Metros   := StrToFloat(edCampo1.Text);
-            loRegraRequisicao.Largura  := StrToFloat(edCampo2.Text);
-          end;
-  end;
-  if   Length(edInscricaoFederalPessoa) = 14 then
-       begin
-         loRegraRequisicao
-       end;
+      case Length (edInscricaoFederalPessoa.Text) of
+           14: loRegraRequisicao.NomeFantasia     := edCampo3.Text;
+           11: loRegraRequisicao.Sexo             := edCampo3.Text;
+      end;
 
+      { Requisição para TProduto }
+      loRegraRequisicao.CodigoProduto := edCodigoProduto.Text;
+      loRegraRequisicao.Descricao     := edDescricaoProduto.Text;
 
-  listBoxRequisicoes.AddItem(loRegraRequisicao.Nome, loRegraRequisicao);
-
+      case rgTipoProduto.ItemIndex of
+           0: loRegraRequisicao.Concentracao := StrToInt(edCampo1.Text);
+           1: begin
+                loRegraRequisicao.Cor         := edCampo1.Text;
+                loRegraRequisicao.Comprimento := StrToFloat(edCampo2.Text);
+              end;
+           2: begin
+                loRegraRequisicao.Memoria     := StrToInt(edCampo1.Text);
+                loRegraRequisicao.Processador := StrToInt(edCampo2.Text);
+              end;
+           3: begin
+                loRegraRequisicao.Metros   := StrToFloat(edCampo1.Text);
+                loRegraRequisicao.Largura  := StrToFloat(edCampo2.Text);
+              end;
+      end;
+      listBoxRequisicoes.AddItem(loRegraRequisicao.Nome, loRegraRequisicao);
+  Except
+      On E:Exception Do
+         ShowMessage(E.Message);
+  End;
 end;
 
 procedure TfrmRequisicao.btnEliminarRequisicaoClick(Sender: TObject);
@@ -194,6 +201,25 @@ begin
       end
  else
    ShowMessage('Não há registros de requisições para mostrar');
+end;
+
+procedure TfrmRequisicao.edInscricaoFederalPessoaChange(Sender: TObject);
+begin
+  if   Length(edInscricaoFederalPessoa.Text) = 14 then
+       begin
+         lbCampo3.Caption := 'Nome Fantasia:'
+       end
+  else
+    if   Length(edInscricaoFederalPessoa.Text) = 11 then
+         begin
+           lbCampo3.Caption := 'Sexo:' + chr(13) +
+                               '[M] Masculino' + chr(13) +
+                               '[F] Feminino';
+         end;
+//    else
+//      ShowMessage ('Campo Inscrição Federal inválido' + chr(13) +
+//                  'deve ser preenchido com:' + chr(13) +
+//                  'CNPJ - 14 dígitos ou CPF - 11 dígitos');
 end;
 
 {$R *.dfm}

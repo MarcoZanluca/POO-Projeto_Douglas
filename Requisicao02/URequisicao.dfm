@@ -23,9 +23,6 @@ object frmRequisicao: TfrmRequisicao
     Align = alClient
     Caption = 'Cadastro'
     TabOrder = 0
-    ExplicitLeft = 192
-    ExplicitTop = -8
-    ExplicitHeight = 602
     object lbCodigoPessoa: TLabel
       Left = 56
       Top = 21
@@ -77,7 +74,7 @@ object frmRequisicao: TfrmRequisicao
     end
     object lbCampo3: TLabel
       Left = 55
-      Top = 102
+      Top = 99
       Width = 43
       Height = 13
       Caption = 'Campo3:'
@@ -102,19 +99,20 @@ object frmRequisicao: TfrmRequisicao
       Width = 113
       Height = 21
       TabOrder = 2
+      OnChange = edInscricaoFederalPessoaChange
     end
     object edDescricaoProduto: TEdit
       Left = 104
       Top = 175
       Width = 183
-      Height = 22
+      Height = 21
       TabOrder = 3
     end
     object edCodigoProduto: TEdit
       Left = 104
       Top = 147
       Width = 113
-      Height = 22
+      Height = 21
       TabOrder = 4
     end
     object rgTipoProduto: TRadioGroup
@@ -135,14 +133,14 @@ object frmRequisicao: TfrmRequisicao
       Left = 178
       Top = 275
       Width = 109
-      Height = 22
+      Height = 21
       TabOrder = 6
     end
     object edCampo2: TEdit
       Left = 178
       Top = 302
       Width = 109
-      Height = 22
+      Height = 21
       TabOrder = 7
     end
     object Panel2: TPanel
@@ -152,8 +150,7 @@ object frmRequisicao: TfrmRequisicao
       Height = 55
       Align = alBottom
       TabOrder = 8
-      ExplicitTop = 404
-      ExplicitWidth = 289
+      ExplicitWidth = 295
       object btnAdicionaRequisicao: TButton
         Left = 15
         Top = 10
@@ -189,8 +186,6 @@ object frmRequisicao: TfrmRequisicao
     Align = alRight
     Caption = 'Consulta'
     TabOrder = 1
-    ExplicitLeft = 293
-    ExplicitHeight = 461
     object listBoxRequisicoes: TListBox
       Left = 2
       Top = 15
@@ -199,9 +194,6 @@ object frmRequisicao: TfrmRequisicao
       Align = alClient
       ItemHeight = 13
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 19
-      ExplicitHeight = 537
     end
     object Panel1: TPanel
       Left = 2
@@ -210,7 +202,8 @@ object frmRequisicao: TfrmRequisicao
       Height = 55
       Align = alBottom
       TabOrder = 1
-      ExplicitTop = 404
+      ExplicitLeft = 4
+      ExplicitWidth = 269
       object btnMostrarDados: TButton
         Left = 13
         Top = 10
