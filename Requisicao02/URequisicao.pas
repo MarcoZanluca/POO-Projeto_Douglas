@@ -81,6 +81,7 @@ begin
   edNomePessoa.Text := '';
   edCodigoPessoa.Text := '';
   edInscricaoFederalPessoa.Text := '';
+  edCampo3.Text := '';
 
   edCodigoProduto.Text := '';
   edDescricaoProduto.Text := '';
@@ -180,8 +181,16 @@ begin
 
         lsRequisicao := 'Código: ' +loRegraRequisicao.CodigoPessoa + chr(13) +
                         'Nome: ' + loRegraRequisicao.Nome + chr(13) +
-                        'Inscrição Federal: ' + loRegraRequisicao.InscricaoFederal + chr(13) +
-                        'Descrição Produto: ' + loRegraRequisicao.Descricao + chr(13);
+                        'Inscrição Federal: ' + loRegraRequisicao.InscricaoFederal + chr(13) + chr(13);
+
+        case   loRegraRequisicao.flRetornaTipoInscricaoFederal of
+               14: lsRequisicao := lsRequisicao + 'JURÍDICA' + chr(13) +
+                                                  'Nome Fantasia: ' + loRegraRequisicao.NomeFantasia + chr(13) + chr(13);
+               11: lsRequisicao := lsRequisicao + 'FÍSICA' + chr(13) +
+                                                  'Sexo: ' + loRegraRequisicao.Sexo + chr(13) +
+                                                  '[M] Masculino' + chr(13) +
+                                                  '[F] Feminino' + chr(13) + chr(13);
+        end; 
 
         case loRegraRequisicao.flRetornaTipoProduto of
            0: lsRequisicao := lsRequisicao + 'QUÍMICO' + chr(13) +
@@ -196,6 +205,7 @@ begin
                                              'Metros: ' + FloatToStr(loRegraRequisicao.Metros) + chr(13) +
                                              'Largura: ' + FloatToStr(loRegraRequisicao.Largura) + chr(13);
         end;
+        lsRequisicao := lsRequisicao + 'Descrição Produto: ' + loRegraRequisicao.Descricao + chr(13) + chr(13);
         lsRequisicao := lsRequisicao + loRegraRequisicao.flRetornaDescricaoTipoProduto;
         ShowMessage(lsRequisicao);
       end
@@ -216,10 +226,6 @@ begin
                                '[M] Masculino' + chr(13) +
                                '[F] Feminino';
          end;
-//    else
-//      ShowMessage ('Campo Inscrição Federal inválido' + chr(13) +
-//                  'deve ser preenchido com:' + chr(13) +
-//                  'CNPJ - 14 dígitos ou CPF - 11 dígitos');
 end;
 
 {$R *.dfm}

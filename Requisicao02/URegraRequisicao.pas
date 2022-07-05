@@ -24,6 +24,8 @@ type
     function GetCodigoPessoa: String;
     function GetNome: String;
     function GetInscricoesFederal: String;
+
+    { TJuridica, TFisica }
     function GetNomeFantasia: String;
     function GetSexo: String;
 
@@ -44,6 +46,8 @@ type
     procedure SetCodigoPessoa(const Value: String);
     procedure SetNome(const Value: String);
     procedure SetInscricaoFederal(const Value: String);
+
+    { TJuridica, TFisica }
     procedure SetNomeFantasia(const Value: String);
     procedure SetSexo(const Value: String);
 
@@ -72,6 +76,7 @@ type
     property CodigoPessoa     : String  read GetCodigoPessoa      write SetCodigoPessoa;
     property Nome             : String  read GetNome              write SetNome;
     property InscricaoFederal : String  read GetInscricoesFederal write SetInscricaoFederal;
+
     property NomeFantasia     : String  read GetNomeFantasia     write SetNomeFantasia;
     property Sexo             : String  read GetSexo             write SetSexo;
 
@@ -272,7 +277,7 @@ end;
 
 procedure TRegraRequisicao.SetSexo(const Value: String);
 begin
-  TFisica(FPessoa).Sexo;
+  TFisica(FPessoa).Sexo := Value;
 end;
 
 { Tipo Produto - Set }

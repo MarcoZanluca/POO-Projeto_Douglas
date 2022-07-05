@@ -106,7 +106,7 @@ object frmRequisicao: TfrmRequisicao
       Top = 175
       Width = 183
       Height = 21
-      TabOrder = 3
+      TabOrder = 5
     end
     object edCodigoProduto: TEdit
       Left = 104
@@ -126,7 +126,7 @@ object frmRequisicao: TfrmRequisicao
         'Fio'
         'Computador'
         'Malha')
-      TabOrder = 5
+      TabOrder = 6
       OnClick = rgTipoProdutoClick
     end
     object edCampo1: TEdit
@@ -134,14 +134,14 @@ object frmRequisicao: TfrmRequisicao
       Top = 275
       Width = 109
       Height = 21
-      TabOrder = 6
+      TabOrder = 7
     end
     object edCampo2: TEdit
       Left = 178
       Top = 302
       Width = 109
       Height = 21
-      TabOrder = 7
+      TabOrder = 8
     end
     object Panel2: TPanel
       Left = 2
@@ -149,7 +149,7 @@ object frmRequisicao: TfrmRequisicao
       Width = 297
       Height = 55
       Align = alBottom
-      TabOrder = 8
+      TabOrder = 9
       ExplicitWidth = 295
       object btnAdicionaRequisicao: TButton
         Left = 15
@@ -175,7 +175,7 @@ object frmRequisicao: TfrmRequisicao
       Top = 99
       Width = 121
       Height = 21
-      TabOrder = 9
+      TabOrder = 3
     end
   end
   object gbConsulta: TGroupBox
