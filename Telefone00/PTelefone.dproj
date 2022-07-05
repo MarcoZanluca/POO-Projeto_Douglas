@@ -46,6 +46,10 @@
 			<DCCReference Include="URequisicao.pas">
 				<Form>Form1</Form>
 			</DCCReference>
+			<DCCReference Include="URegraRequisicao.pas"/>
+			<DCCReference Include="UTelefone.pas"/>
+			<DCCReference Include="UCelular.pas"/>
+			<DCCReference Include="UFixo.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
