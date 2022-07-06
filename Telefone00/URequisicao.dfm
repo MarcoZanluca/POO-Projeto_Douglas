@@ -1,4 +1,4 @@
-object Form1: TForm1
+object frmRequisicaoTelefone: TfrmRequisicaoTelefone
   Left = 0
   Top = 0
   Caption = 'Telefone'
@@ -12,6 +12,7 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object gbCadastro: TGroupBox
@@ -22,8 +23,7 @@ object Form1: TForm1
     Align = alLeft
     Caption = 'Cadastro'
     TabOrder = 0
-    ExplicitLeft = -4
-    ExplicitHeight = 360
+    ExplicitLeft = 2
     object lbVivaVoz: TLabel
       Left = 110
       Top = 32
@@ -43,13 +43,16 @@ object Form1: TForm1
       Top = 187
       Width = 39
       Height = 13
+      Alignment = taRightJustify
       Caption = 'Campo1'
+      Visible = False
     end
     object lbCampo2: TLabel
       Left = 155
       Top = 219
       Width = 39
       Height = 13
+      Alignment = taRightJustify
       Caption = 'Campo2'
     end
     object edVivaVoz: TEdit
@@ -69,13 +72,14 @@ object Form1: TForm1
     object rgTipoProduto: TRadioGroup
       Left = 8
       Top = 104
-      Width = 113
+      Width = 97
       Height = 201
       Caption = 'TipoProduto'
       Items.Strings = (
         'Celular'
         'Fixo')
       TabOrder = 2
+      OnClick = rgTipoProdutoClick
     end
     object pnBotoes1: TPanel
       Left = 2
@@ -84,7 +88,6 @@ object Form1: TForm1
       Height = 48
       Align = alBottom
       TabOrder = 3
-      ExplicitTop = 318
       object btnAdicionar: TButton
         Left = 6
         Top = 8
@@ -92,6 +95,7 @@ object Form1: TForm1
         Height = 33
         Caption = 'Adicionar'
         TabOrder = 0
+        OnClick = btnAdicionarClick
       end
       object btnLimpar: TButton
         Left = 170
@@ -100,6 +104,7 @@ object Form1: TForm1
         Height = 33
         Caption = 'Limpar'
         TabOrder = 1
+        OnClick = btnLimparClick
       end
     end
     object edCampo1: TEdit
@@ -125,7 +130,6 @@ object Form1: TForm1
     Align = alRight
     Caption = 'Consulta'
     TabOrder = 1
-    ExplicitLeft = 327
     object pnBotoes2: TPanel
       Left = 2
       Top = 317
@@ -133,7 +137,6 @@ object Form1: TForm1
       Height = 48
       Align = alBottom
       TabOrder = 0
-      ExplicitWidth = 342
       object btnEliminar: TButton
         Left = 171
         Top = 8

@@ -44,7 +44,7 @@
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="URequisicao.pas">
-				<Form>Form1</Form>
+				<Form>frmRequisicaoTelefone</Form>
 			</DCCReference>
 			<DCCReference Include="URegraRequisicao.pas"/>
 			<DCCReference Include="UTelefone.pas"/>

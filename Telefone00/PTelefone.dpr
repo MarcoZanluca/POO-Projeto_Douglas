@@ -2,7 +2,7 @@ program PTelefone;
 
 uses
   Forms,
-  URequisicao in 'URequisicao.pas' {Form1},
+  URequisicao in 'URequisicao.pas' {frmRequisicaoTelefone},
   URegraRequisicao in 'URegraRequisicao.pas',
   UTelefone in 'UTelefone.pas',
   UCelular in 'UCelular.pas',
@@ -13,6 +13,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmRequisicaoTelefone, frmRequisicaoTelefone);
   Application.Run;
 end.

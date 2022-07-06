@@ -88,7 +88,7 @@ begin
   edCampo1.Text := '';
   edCampo2.Text := '';
 
-  rgTipoProduto.ItemIndex := 0;
+  rgTipoProduto.ItemIndex := -1;
 end;
 
 procedure TfrmRequisicao.rgTipoProdutoClick(Sender: TObject);

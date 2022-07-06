@@ -150,7 +150,6 @@ object frmRequisicao: TfrmRequisicao
       Height = 55
       Align = alBottom
       TabOrder = 9
-      ExplicitWidth = 295
       object btnAdicionaRequisicao: TButton
         Left = 15
         Top = 10
@@ -202,8 +201,6 @@ object frmRequisicao: TfrmRequisicao
       Height = 55
       Align = alBottom
       TabOrder = 1
-      ExplicitLeft = 4
-      ExplicitWidth = 269
       object btnMostrarDados: TButton
         Left = 13
         Top = 10
