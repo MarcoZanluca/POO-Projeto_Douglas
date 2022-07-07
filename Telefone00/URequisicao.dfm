@@ -5,6 +5,7 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
   ClientHeight = 367
   ClientWidth = 658
   Color = clBtnFace
+  DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -55,19 +56,12 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
       Alignment = taRightJustify
       Caption = 'Campo2'
     end
-    object edVivaVoz: TEdit
-      Left = 160
-      Top = 29
-      Width = 121
-      Height = 21
-      TabOrder = 0
-    end
     object edMarca: TEdit
       Left = 160
       Top = 61
       Width = 161
       Height = 21
-      TabOrder = 1
+      TabOrder = 0
     end
     object rgTipoProduto: TRadioGroup
       Left = 8
@@ -78,7 +72,7 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
       Items.Strings = (
         'Celular'
         'Fixo')
-      TabOrder = 2
+      TabOrder = 1
       OnClick = rgTipoProdutoClick
     end
     object pnBotoes1: TPanel
@@ -98,7 +92,7 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
         OnClick = btnAdicionarClick
       end
       object btnLimpar: TButton
-        Left = 170
+        Left = 174
         Top = 8
         Width = 146
         Height = 33
@@ -112,14 +106,27 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
       Top = 184
       Width = 121
       Height = 21
-      TabOrder = 4
+      TabOrder = 2
     end
-    object edCampo2: TEdit
+    object cbVivaVoz: TComboBox
+      Left = 160
+      Top = 29
+      Width = 122
+      Height = 21
+      TabOrder = 4
+      Items.Strings = (
+        'Possui'
+        'N'#227'o possui')
+    end
+    object cbCampo2: TComboBox
       Left = 200
       Top = 216
-      Width = 121
+      Width = 122
       Height = 21
       TabOrder = 5
+      Items.Strings = (
+        'Possui'
+        'N'#227'o possui')
     end
   end
   object gbConsulta: TGroupBox
@@ -144,6 +151,7 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
         Height = 33
         Caption = 'Eliminar'
         TabOrder = 0
+        OnClick = btnEliminarClick
       end
       object btnMostrar: TButton
         Left = 7
@@ -152,6 +160,7 @@ object frmRequisicaoTelefone: TfrmRequisicaoTelefone
         Height = 33
         Caption = 'Mostrar'
         TabOrder = 1
+        OnClick = btnMostrarClick
       end
     end
     object listboxConsulta: TListBox

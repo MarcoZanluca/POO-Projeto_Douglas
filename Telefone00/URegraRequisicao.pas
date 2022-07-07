@@ -14,24 +14,24 @@ type
   private
       FTelefone: TTelefone;
     { TTelefone - Get }
-    function GetMarca: char;
-    function GetVivaVoz: byte;
+    function GetMarca: String;
+    function GetVivaVoz: String;
 
     { TCelular - TFixo - Get }
     function GetMemoria: integer;
-    function GetTouch: byte;
-    function GetTamanhoCabo: integer;
-    function GetFoneSemFio: byte;
+    function GetTouch: String;
+    function GetTamanhoCabo: Double;
+    function GetFoneSemFio: String;
 
     { TTelefone - Set }
-    procedure SetMarca(const Value: char);
-    procedure SetVivaVoz(const Value: byte);
+    procedure SetMarca(const Value: String);
+    procedure SetVivaVoz(const Value: String);
 
     { TCelular - TFixo - Set }
     procedure SetMemoria(const Value: integer);
-    procedure SetTouch(const Value: byte);
-    procedure SetTamanhoCabo(const Value: integer);
-    procedure SetFoneSemFio(const Value: byte);
+    procedure SetTouch(const Value: String);
+    procedure SetTamanhoCabo(const Value: Double);
+    procedure SetFoneSemFio(const Value: String);
 
   public
     constructor Create(const cyTipoProduto: Byte);
@@ -39,14 +39,14 @@ type
 
     function flRetornaTipoProduto: Byte;
 
-    property Marca   : char  read GetMarca    write SetMarca;
-    property VivaVoz : byte  read GetVivaVoz  write SetVivaVoz;
+    property Marca   : String  read GetMarca    write SetMarca;
+    property VivaVoz : String    read GetVivaVoz  write SetVivaVoz;
 
     property Memoria : integer  read GetMemoria  write SetMemoria;
-    property Touch   : byte     read GetTouch    write SetTouch;
+    property Touch   : String   read GetTouch    write SetTouch;
 
-    property TamanhoCabo : integer  read GetTamanhoCabo  write SetTamanhoCabo;
-    property FoneSemFio  : byte     read GetFoneSemFio   write SetFoneSemFio;
+    property TamanhoCabo : Double  read GetTamanhoCabo  write SetTamanhoCabo;
+    property FoneSemFio  : String   read GetFoneSemFio   write SetFoneSemFio;
   end;
 
 implementation
@@ -78,12 +78,12 @@ begin
 end;
 
 { TTelefone - Get }
-function TRegraRequisicao.GetMarca: char;
+function TRegraRequisicao.GetMarca: String;
 begin
   Result := FTelefone.Marca;
 end;
 
-function TRegraRequisicao.GetVivaVoz: byte;
+function TRegraRequisicao.GetVivaVoz: String;
 begin
   Result := FTelefone.VivaVoz;
 end;
@@ -94,30 +94,30 @@ begin
   Result := TCelular(FTelefone).Memoria;
 end;
 
-function TRegraRequisicao.GetTouch: byte;
+function TRegraRequisicao.GetTouch: String;
 begin
   Result := TCelular(FTelefone).Touch;
 end;
 
 { TFixo - Get }
-function TRegraRequisicao.GetTamanhoCabo: integer;
+function TRegraRequisicao.GetTamanhoCabo: Double;
 begin
   Result := TFixo(FTelefone).TamanhoCabo;
 end;
 
-function TRegraRequisicao.GetFoneSemFio: byte;
+function TRegraRequisicao.GetFoneSemFio: String;
 begin
   Result := TFixo(FTelefone).FoneSemFio;
 end;
 
 
 { TTelefone - Set }
-procedure TRegraRequisicao.SetMarca(const Value: char);
+procedure TRegraRequisicao.SetMarca(const Value: String);
 begin
   FTelefone.Marca := Value;
 end;
 
-procedure TRegraRequisicao.SetVivaVoz(const Value: byte);
+procedure TRegraRequisicao.SetVivaVoz(const Value: String);
 begin
   FTelefone.VivaVoz := Value;
 end;
@@ -125,23 +125,23 @@ end;
 { TCelular - Set }
 procedure TRegraRequisicao.SetMemoria(const Value: integer);
 begin
-  TCelular(TTelefone).Memoria := Value;
+  TCelular(FTelefone).Memoria := Value;
 end;
 
-procedure TRegraRequisicao.SetTouch(const Value: byte);
+procedure TRegraRequisicao.SetTouch(const Value: String);
 begin
-  TCelular(TTelefone).Touch := Value;
+  TCelular(FTelefone).Touch := Value;
 end;
 
 { TFixo - Set }
-procedure TRegraRequisicao.SetTamanhoCabo(const Value: integer);
+procedure TRegraRequisicao.SetTamanhoCabo(const Value: Double);
 begin
-  TFixo(TTelefone).TamanhoCabo := Value;
+  TFixo(FTelefone).TamanhoCabo := Value;
 end;
 
-procedure TRegraRequisicao.SetFoneSemFio(const Value: byte);
+procedure TRegraRequisicao.SetFoneSemFio(const Value: String);
 begin
-  TFixo(TTelefone).FoneSemFio := Value;
+  TFixo(FTelefone).FoneSemFio := Value;
 end;
 
 end.

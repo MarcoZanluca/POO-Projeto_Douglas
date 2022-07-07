@@ -8,15 +8,15 @@ type
   TCelular = class(TTelefone)
   private
     FMemoria: integer;
-    FTouch: byte;
+    FTouch: String;
     function GetMemoria: integer;
-    function GetTouch: byte;
+    function GetTouch: String;
     procedure SetMemoria(const Value: integer);
-    procedure SetTouch(const Value: byte);
+    procedure SetTouch(const Value: String);
 
   public
     property Memoria : integer  read GetMemoria  write SetMemoria;
-    property Touch   : byte     read GetTouch    write SetTouch;
+    property Touch   : String   read GetTouch    write SetTouch;
   end;
 
 implementation
@@ -28,7 +28,7 @@ begin
   Result := FMemoria;
 end;
 
-function TCelular.GetTouch: byte;
+function TCelular.GetTouch: String;
 begin
   Result := FTouch;
 end;
@@ -38,7 +38,7 @@ begin
   FMemoria := Value;
 end;
 
-procedure TCelular.SetTouch(const Value: byte);
+procedure TCelular.SetTouch(const Value: String);
 begin
   FTouch := Value;
 end;
