@@ -85,8 +85,8 @@ begin
     end;
     listboxConsulta.AddItem(loRegraRequisicao.Marca, loRegraRequisicao);
   //Except
-//    On E:Exception Do
-//         ShowMessage(E.Message);
+  //On   E:Exception Do
+  //     ShowMessage(E.Message);
   //end;
 end;
 
