@@ -8,7 +8,7 @@ type
   TSomar = class(TCalculadora)
   private
   public
-    function flCalcula(num1, num2: double): double;
+    function flCalcula(num1, num2: double): double; override;
   end;
 
 implementation

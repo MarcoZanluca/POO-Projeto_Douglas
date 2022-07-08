@@ -4,7 +4,8 @@ interface
 
 type
   TCalculadora = class
-  private
+  public
+    function flCalcula(num1, num2: double): double; virtual; abstract;
   public
 
 

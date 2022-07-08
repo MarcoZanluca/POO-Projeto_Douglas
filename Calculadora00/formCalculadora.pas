@@ -40,38 +40,21 @@ procedure TfrmCalculadora.btnCalcularClick(Sender: TObject);
 var
   num1, num2: double;
 
-  Somar       : TSomar;
-  Subtrair    : TSubtrair;
-  Multiplicar : TMultiplicar;
-  Dividir     : TDividir;
-
+  Calculadora : TCalculadora;
 begin
-  Somar       := TSomar.Create;
-  Subtrair    := TSubtrair.Create;
-  Multiplicar := TMultiplicar.Create;
-  Dividir     := TDividir.Create;
-
   num1 := StrToFloat(edNum1.Text);
   num2 := StrToFloat(edNum2.Text);
 
   case cbOperacao.ItemIndex of
-    0: begin
-         ShowMessage ('Resultado = ' + FloatToStr(Somar.flCalcula(num1,num2)));
-       end;
-    1: begin
-        ShowMessage ('Resultado = ' + FloatToStr(Subtrair.flCalcula(num1,num2)));
-       end;
-    2: begin
-        ShowMessage ('Resultado = ' + FloatToStr(Multiplicar.flCalcula(num1,num2)));
-       end;
-    3: begin
-        ShowMessage ('Resultado = ' + FloatToStr(Dividir.flCalcula(num1, num2)));
-       end;
+    0: Calculadora := TSomar.Create;
+    1: Calculadora := TSubtrair.Create;
+    2: Calculadora := TMultiplicar.Create;
+    3: Calculadora := TDividir.Create;
   end;
-  Somar.Free;
-  Subtrair.Free;
-  Multiplicar.Free;
-  Dividir.Free;
+
+  ShowMessage ('Resultado = ' + FloatToStr(Calculadora.flCalcula(num1,num2)));
+
+  Calculadora.Free;
 end;
 
 end.
