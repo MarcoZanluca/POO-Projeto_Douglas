@@ -2,8 +2,8 @@ object frmCalculadora: TfrmCalculadora
   Left = 0
   Top = 0
   Caption = 'Calculadora'
-  ClientHeight = 217
-  ClientWidth = 200
+  ClientHeight = 194
+  ClientWidth = 209
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,67 +14,59 @@ object frmCalculadora: TfrmCalculadora
   PixelsPerInch = 96
   TextHeight = 13
   object lbNum1: TLabel
-    Left = 16
+    Left = 25
     Top = 27
     Width = 31
     Height = 13
     Caption = 'Num1:'
   end
   object lbNum2: TLabel
-    Left = 16
+    Left = 25
     Top = 67
     Width = 31
     Height = 13
     Caption = 'Num2:'
   end
+  object lbOperacao: TLabel
+    Left = 5
+    Top = 107
+    Width = 51
+    Height = 13
+    Caption = 'Opera'#231#227'o:'
+  end
   object edNum1: TEdit
-    Left = 53
+    Left = 62
     Top = 24
     Width = 131
     Height = 21
     TabOrder = 0
   end
   object edNum2: TEdit
-    Left = 53
+    Left = 62
     Top = 64
     Width = 131
     Height = 21
     TabOrder = 1
   end
-  object btnSoma: TButton
-    Left = 16
-    Top = 129
+  object btnCalcular: TButton
+    Left = 112
+    Top = 143
     Width = 81
     Height = 32
-    Caption = 'Soma'
+    Caption = 'Calcular'
     TabOrder = 2
-    OnClick = btnSomaClick
+    OnClick = btnCalcularClick
   end
-  object btnSubtracao: TButton
-    Left = 103
-    Top = 129
-    Width = 81
-    Height = 32
-    Caption = 'Subtracao'
+  object cbOperacao: TComboBox
+    Left = 62
+    Top = 104
+    Width = 131
+    Height = 21
     TabOrder = 3
-    OnClick = btnSubtracaoClick
-  end
-  object btnMultiplicacao: TButton
-    Left = 16
-    Top = 167
-    Width = 81
-    Height = 32
-    Caption = 'Multiplicacao'
-    TabOrder = 4
-    OnClick = btnMultiplicacaoClick
-  end
-  object btnDivisao: TButton
-    Left = 103
-    Top = 167
-    Width = 81
-    Height = 32
-    Caption = 'Divisao'
-    TabOrder = 5
-    OnClick = btnDivisaoClick
+    Items.Strings = (
+      '+'
+      '-'
+      '*'
+      '/')
   end
 end

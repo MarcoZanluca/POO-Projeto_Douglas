@@ -4,7 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls;
+  Dialogs, StdCtrls
+
+  ,UCalculadora
+  ,USoma
+  ,USubtracao
+  ,UMultiplicacao
+  ,UDivisao
+  ;
 
 type
   TfrmCalculadora = class(TForm)
@@ -12,14 +19,10 @@ type
     edNum1: TEdit;
     lbNum2: TLabel;
     edNum2: TEdit;
-    btnSoma: TButton;
-    btnSubtracao: TButton;
-    btnMultiplicacao: TButton;
-    btnDivisao: TButton;
-    procedure btnSomaClick(Sender: TObject);
-    procedure btnSubtracaoClick(Sender: TObject);
-    procedure btnMultiplicacaoClick(Sender: TObject);
-    procedure btnDivisaoClick(Sender: TObject);
+    btnCalcular: TButton;
+    cbOperacao: TComboBox;
+    lbOperacao: TLabel;
+    procedure btnCalcularClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,44 +36,42 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmCalculadora.btnDivisaoClick(Sender: TObject);
+procedure TfrmCalculadora.btnCalcularClick(Sender: TObject);
 var
- num1, num2, result: real;
-begin
- num1 := StrToFloat(edNum1.Text);
- num2 := StrToFloat(edNum2.Text);
- Result := num1/num2;
- ShowMessage ('Resultado = '+FloatToStr(result));
-end;
+  num1, num2: double;
 
-procedure TfrmCalculadora.btnMultiplicacaoClick(Sender: TObject);
-var
- num1, num2, result: real;
-begin
- num1 := StrToFloat(edNum1.Text);
- num2 := StrToFloat(edNum2.Text);
- Result := num1*num2;
- ShowMessage ('Resultado = '+FloatToStr(result));
-end;
+  Somar       : TSomar;
+  Subtrair    : TSubtrair;
+  Multiplicar : TMultiplicar;
+  Dividir     : TDividir;
 
-procedure TfrmCalculadora.btnSomaClick(Sender: TObject);
-var
- num1, num2, result: real;
 begin
- num1 := StrToFloat(edNum1.Text);
- num2 := StrToFloat(edNum2.Text);
- Result := num1+num2;
- ShowMessage ('Resultado = '+FloatToStr(result));
-end;
+  Somar       := TSomar.Create;
+  Subtrair    := TSubtrair.Create;
+  Multiplicar := TMultiplicar.Create;
+  Dividir     := TDividir.Create;
 
-procedure TfrmCalculadora.btnSubtracaoClick(Sender: TObject);
-var
- num1, num2, result: real;
-begin
- num1 := StrToFloat(edNum1.Text);
- num2 := StrToFloat(edNum2.Text);
- Result := num1-num2;
- ShowMessage ('Resultado = '+FloatToStr(result));
+  num1 := StrToFloat(edNum1.Text);
+  num2 := StrToFloat(edNum2.Text);
+
+  case cbOperacao.ItemIndex of
+    0: begin
+         ShowMessage ('Resultado = ' + FloatToStr(Somar.flCalcula(num1,num2)));
+       end;
+    1: begin
+        ShowMessage ('Resultado = ' + FloatToStr(Subtrair.flCalcula(num1,num2)));
+       end;
+    2: begin
+        ShowMessage ('Resultado = ' + FloatToStr(Multiplicar.flCalcula(num1,num2)));
+       end;
+    3: begin
+        ShowMessage ('Resultado = ' + FloatToStr(Dividir.flCalcula(num1, num2)));
+       end;
+  end;
+  Somar.Free;
+  Subtrair.Free;
+  Multiplicar.Free;
+  Dividir.Free;
 end;
 
 end.
