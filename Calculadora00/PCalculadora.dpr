@@ -7,7 +7,8 @@ uses
   USubtracao in 'USubtracao.pas',
   UMultiplicacao in 'UMultiplicacao.pas',
   UDivisao in 'UDivisao.pas',
-  UCalculadora in 'UCalculadora.pas';
+  UCalculadora in 'UCalculadora.pas',
+  URaizQuadrada in 'URaizQuadrada.pas';
 
 {$R *.res}
 

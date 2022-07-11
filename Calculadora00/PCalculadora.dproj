@@ -51,6 +51,7 @@
 			<DCCReference Include="UMultiplicacao.pas"/>
 			<DCCReference Include="UDivisao.pas"/>
 			<DCCReference Include="UCalculadora.pas"/>
+			<DCCReference Include="URaizQuadrada.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
