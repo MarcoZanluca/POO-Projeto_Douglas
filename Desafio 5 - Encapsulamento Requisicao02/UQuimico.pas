@@ -16,7 +16,7 @@ type
 
   public
     function flRetornaConcentracao: String;
-    function flRetornaDescricaoTipoProdutoQuimico: String;
+    function flRetornaDescricaoTipoProduto: String; override;
 
     property Concentracao : Integer read GetConcentracao  write SetConcentracao;
   end;
@@ -44,9 +44,9 @@ begin
              Result := 'Concetração Média';
 end;
 
-function TQuimico.flRetornaDescricaoTipoProdutoQuimico: String;
+function TQuimico.flRetornaDescricaoTipoProduto: String;
 begin
-  Result := flRetornaDescricaoTipoProduto;
+  Result := 'Faço parte de um grupo seleto de produtos químicos';
 end;
 
 end.

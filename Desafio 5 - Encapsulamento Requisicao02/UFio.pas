@@ -17,6 +17,9 @@ type
     procedure SetCor(const Value: String);
     procedure SetComprimento(const Value: Double);
   public
+
+    function flRetornaDescricaoTipoProduto: String; override;
+
     property Cor          : String  read GetCor          write SetCor;
     property Comprimento  : Double  read GetComprimento  write SetComprimento;
   end;
@@ -24,6 +27,11 @@ type
 implementation
 
 { TFio }
+
+function TFio.flRetornaDescricaoTipoProduto: String;
+begin
+  Result := 'Faço parte de um grupo seleto de filamentos';
+end;
 
 function TFio.GetComprimento: Double;
 begin

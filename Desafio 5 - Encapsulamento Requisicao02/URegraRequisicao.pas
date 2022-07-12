@@ -133,11 +133,11 @@ begin
                         'Inscrição Federal: ' + InscricaoFederal + chr(13) + chr(13);
   case   flRetornaTipoInscricaoFederal of
          14: Result := Result + 'JURÍDICA' + chr(13) +
-                                            'Nome Fantasia: ' + NomeFantasia + chr(13) + chr(13);
+                                'Nome Fantasia: ' + NomeFantasia + chr(13) + chr(13);
          11: Result := Result + 'FÍSICA' + chr(13) +
-                                            'Sexo: ' + Sexo + chr(13) +
-                                            '[M] Masculino' + chr(13) +
-                                            '[F] Feminino' + chr(13) + chr(13);
+                                'Sexo: ' + Sexo + chr(13) +
+                                '[M] Masculino' + chr(13) +
+                                '[F] Feminino' + chr(13) + chr(13);
   end;
 end;
 
@@ -146,10 +146,10 @@ begin
   Result := emptyStr;
   case flRetornaTipoProduto of
        0: Result := 'QUÍMICO' + chr(13) +
-                                         'Concentração: ' + IntToStr(Concentracao) + '% - ' + flRetornaConcentracao + chr(13);
+                    'Concentração: ' + IntToStr(Concentracao) + '% - ' + flRetornaConcentracao + chr(13);
        1: Result := 'FIO' + chr(13) +
-                    'Cor: '+Cor+chr(13) +
-                    'Comprimento: ' + FloatToStr(Comprimento);
+                    'Cor: '+ Cor + chr(13) +
+                    'Comprimento: ' + FloatToStr(Comprimento) + chr(13);
        2: Result := 'COMPUTADOR' + chr(13) +
                     'Memória: ' + IntToStr(Memoria) + chr(13) +
                     'Processador: ' + IntToStr(Processador) + chr(13);
@@ -171,8 +171,7 @@ end;
 function TRegraRequisicao.flRetornaDescricaoTipoProduto: String;
 begin
   Result := '';
-  if   FProduto is TQuimico then
-       Result := TQuimico (FProduto).flRetornaDescricaoTipoProdutoQuimico;
+  Result := FProduto.flRetornaDescricaoTipoProduto;
 end;
 
 function TRegraRequisicao.flRetornaTipoInscricaoFederal: Byte;

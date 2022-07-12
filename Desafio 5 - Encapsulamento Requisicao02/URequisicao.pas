@@ -193,11 +193,8 @@ begin
  if   listBoxRequisicoes.ItemIndex <> -1 then
       begin
         loRegraRequisicao := TRegraRequisicao(listBoxRequisicoes.Items.Objects[listBoxRequisicoes.ItemIndex]);
-
         lsRequisicao := loRegraRequisicao.flImprimirPessoa;
-
-        lsRequisicao := loRegraRequisicao.flImprimirProduto;
-
+        lsRequisicao := lsRequisicao + loRegraRequisicao.flImprimirProduto;
         ShowMessage(lsRequisicao);
       end
  else

@@ -14,9 +14,10 @@ type
      procedure SetCodigo(const Value: String);
      procedure SetDescricao(const Value: String);
 
-   protected
-     function flRetornaDescricaoTipoProduto: String;
    public
+
+     function flRetornaDescricaoTipoProduto: String; virtual; abstract;
+
      property Codigo    : String  read GetCodigo     write SetCodigo;
      property Descricao : String  read GetDescricao  write SetDescricao;
   end;
@@ -24,11 +25,6 @@ type
 implementation
 
 { TProduto }
-
-function TProduto.flRetornaDescricaoTipoProduto: String;
-begin
-  Result := 'Faço parte de um grupo seleto de produtos';
-end;
 
 function TProduto.GetCodigo: String;
 begin

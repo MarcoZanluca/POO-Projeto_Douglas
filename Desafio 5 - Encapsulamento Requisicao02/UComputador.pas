@@ -17,6 +17,9 @@ type
     procedure SetMemoria(const Value: Integer);
     procedure SetProcessador(const Value: Integer);
   public
+
+    function flRetornaDescricaoTipoProduto: String; override;
+
     property Memoria      : Integer  read GetMemoria      write SetMemoria;
     property Processador  : Integer  read GetProcessador  write SetProcessador;
   end;
@@ -25,6 +28,11 @@ type
 implementation
 
 { TComputador }
+
+function TComputador.flRetornaDescricaoTipoProduto: String;
+begin
+  Result := 'Faço parte de um grupo seleto de produtos para computadores';
+end;
 
 function TComputador.GetMemoria: Integer;
 begin

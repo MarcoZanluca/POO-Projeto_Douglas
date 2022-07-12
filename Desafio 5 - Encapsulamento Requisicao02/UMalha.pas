@@ -18,6 +18,9 @@ type
     procedure SetLargura(const Value: Double);
 
   public
+
+    function flRetornaDescricaoTipoProduto: String; override;
+
     property Metros  : Double read GetMetros write SetMetros;
     property Largura : Double read GetLargura write SetLargura;
 
@@ -30,6 +33,11 @@ implementation
 function TMalha.GetMetros: Double;
 begin
   Result := FMetros;
+end;
+
+function TMalha.flRetornaDescricaoTipoProduto: String;
+begin
+  Result := 'Faço parte de um grupo seleto de malhas';
 end;
 
 function TMalha.GetLargura: Double;
